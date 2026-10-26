@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dashboard layout using named grid areas.">
+  <title>Kavya Pathak – Dashboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+    body {
+      font-family: system-ui, sans-serif;
+      background: #e9ecf3;
+    }
+    .dashboard {
+      display: grid;
+      min-height: 100vh;
+      grid-template-columns: 220px 1fr 1fr 1fr;
+      grid-template-rows: 64px auto 1fr 48px;
+      grid-template-areas:
+        "header  header  header  header"
+        "sidebar stat1   stat2   stat3"
+        "sidebar chart   chart   activity"
+        "footer  footer  footer  footer";
+      gap: 1rem;
+    }
+    .dashboard > * {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1rem;
+    }
+    .header {
+      grid-area: header;
+      background: #1f2a44;
+      color: #fff;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .sidebar {
+      grid-area: sidebar;
+      background: #2b3a67;
+      color: #fff;
+      border-radius: 0 10px 10px 0;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar a {
+      display: block;
+      padding: .6rem 0;
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, .15);
+    }
+    .sidebar a:hover {
+      color: #a5b4fc;
+    }
+    .stat1 { grid-area: stat1; }
+    .stat2 { grid-area: stat2; }
+    .stat3 { grid-area: stat3; }
+    .chart { grid-area: chart; }
+    .activity { grid-area: activity; }
+    .footer {
+      grid-area: footer;
+      border-radius: 0;
+      text-align: center;
+      font-size: .85rem;
+    }
+    .stat {
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s;
+    }
+    .stat:hover {
+      transform: translateY(-3px);
+    }
+    .stat strong {
+      display: block;
+      font-size: 2rem;
+      color: #2b3a67;
+    }
+    .bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      height: 160px;
+      margin-top: 1rem;
+    }
+    .bars span {
+      flex: 1;
+      background: linear-gradient(#5c7cfa, #3b5bdb);
+      border-radius: 4px 4px 0 0;
+    }
+    .activity li {
+      margin: .5rem 0 .5rem 1rem;
+    }
+    @media (max-width: 800px) {
+      .dashboard {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+          "header header"
+          "stat1 stat2"
+          "stat3 stat3"
+          "chart chart"
+          "activity activity"
+          "sidebar sidebar"
+          "footer footer";
+      }
+      .sidebar {
+        border-radius: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <header class="header">
+      <strong>Kavya Pathak</strong>
+      <span>Hello, Kavya</span>
+    </header>
+
+    <aside class="sidebar">
+      <ul>
+        <li><a href="https://github.com/kp7968" target="_blank">📊 Overview</a></li>
+        <li><a href="https://github.com/kp7968" target="_blank">💻 Projects</a></li>
+        <li><a href="https://github.com/kp7968" target="_blank">☁️ Skills</a></li>
+        <li><a href="mailto:kavyapathak23@gmail.com">⚙️ Contact</a></li>
+      </ul>
+    </aside>
+
+    <a class="stat stat1" href="https://github.com/kp7968" target="_blank">
+      <span>Projects</span>
+      <strong>2</strong>
+    </a>
+
+    <a class="stat stat2" href="https://github.com/kp7968" target="_blank">
+      <span>Skills</span>
+      <strong>6+</strong>
+    </a>
+
+    <a class="stat stat3" href="https://leetcode.com" target="_blank">
+      <span>LeetCode</span>
+      <strong>Active</strong>
+    </a>
+
+    <section class="chart">
+      <h2>Learning Progress</h2>
+      <div class="bars" aria-hidden="true">
+        <span style="height:40%"></span>
+        <span style="height:65%"></span>
+        <span style="height:50%"></span>
+        <span style="height:85%"></span>
+        <span style="height:70%"></span>
+        <span style="height:95%"></span>
+        <span style="height:60%"></span>
+      </div>
+    </section>
+
+    <section class="activity">
+      <h2>Recent Activity</h2>
+      <ul>
+        <li>Completed Zari Setu prototype</li>
+        <li>Practiced Python password checker</li>
+        <li>Solved DSA problems on LeetCode</li>
+      </ul>
+    </section>
+
+    <footer class="footer">&copy; 2026 Kavya Pathak</footer>
+  </div>
+</body>
+</html>
